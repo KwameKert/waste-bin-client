@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./../components/common/form";
 import Joi from "joi-browser";
+import { Link } from "react-router-dom";
 
 class Login extends Form {
   state = {
@@ -29,6 +30,7 @@ class Login extends Form {
                   >
                     Login
                   </button>
+                  <Link to="/app/dashboard">Manatee</Link>
                 </form>
               </div>
             </div>
