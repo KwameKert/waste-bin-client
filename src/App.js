@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import { Route, Redirect, Switch } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
-import DefaultLayer from "./components/layouts/Default";
+//import DefaultLayer from "./components/layouts/Default";
+import Main from "./components/layouts/Main";
 
 class App extends Component {
   state = {};
@@ -13,7 +12,7 @@ class App extends Component {
       <React.Fragment>
         <Switch>
           <Route path="/login" component={Login} />
-          <Route path="/" component={DefaultLayer} />
+          <Route path="/" component={Main} />
         </Switch>
       </React.Fragment>
     );

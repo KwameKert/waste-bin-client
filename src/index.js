@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "font-awesome/css/font-awesome.css";
 import $ from "jquery";
 import Popper from "popper.js";
 import { BrowserRouter } from "react-router-dom";

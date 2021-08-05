@@ -1,13 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = () => {
+const Navbar = ({ onToggle }) => {
   return (
     <React.Fragment>
-      <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+      <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top fixed">
+        <FontAwesomeIcon
+          icon={faList}
+          className="clickable"
+          onClick={() => onToggle()}
+        />
+
         <button
           className="navbar-toggler"
           type="button"
@@ -43,6 +48,10 @@ const Navbar = () => {
                 <a className="dropdown-item disabled" href="#">
                   Profile
                 </a>
+
+                <Link className="dropdown-item" to="/settings">
+                  Settings
+                </Link>
 
                 <div className="dropdown-divider"></div>
                 <Link className="dropdown-item" to="/login">

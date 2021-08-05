@@ -30,7 +30,7 @@ class Login extends Form {
                   >
                     Login
                   </button>
-                  <Link to="/app/dashboard">Manatee</Link>
+                  <Link to="/dashboard">Manatee</Link>
                 </form>
               </div>
             </div>
