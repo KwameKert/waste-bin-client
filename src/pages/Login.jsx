@@ -22,7 +22,7 @@ class Login extends Form {
     try {
       this.setState({ isLoading: true, errorMessage: "" });
       const { data } = this.state;
-      this.props.history.push("/login");
+      this.props.history.push("/dashboard");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         let { message } = ex.response.data;
