@@ -1,16 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Roboto&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Lato", sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f0f1 !important;
+  background-color: #e5e7ed !important;
 }
 
 .bg-white {
-  background-color: #fff !important;
+  background-color: #e5e7ed !important;
 }
 
 /* nav {
@@ -65,6 +64,7 @@ code {
 
 /* main page */
 #sidebar-wrapper {
+  background-color: #fff;
   min-height: 100vh;
   margin-left: -15rem;
   -webkit-transition: margin 0.25s ease-out;
@@ -107,4 +107,60 @@ code {
 
 .clickable {
   cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.subLink {
+  padding: 10px 10px 10px 40px;
+}
+.subLink a {
+  color: #495057;
+  text-decoration: none;
+}
+
+.subLink:hover {
+  background-color: aliceblue;
+}
+
+.transition-collapse {
+  transition: all 0.25s ease-out;
+}
+
+.dashboardHeading {
+  font-weight: 900;
+}
+
+.dashboardCardBody {
+  padding: 32px;
+}
+
+.btn-primary {
+  background-color: #2012fe;
+  border-color: #2012fe;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #fff;
+  background-color: #2012fe;
+  border-color: #2012fe;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #2212fe8c;
+  border-color: #2212fe8c;
+}
+
+.alertNoPadding {
+  padding: 0 !important;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
 }

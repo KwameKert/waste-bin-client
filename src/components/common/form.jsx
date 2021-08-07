@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./input";
 import Select from "./select";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 class Form extends Component {
   state = {
     data: {},
-    errors: {}
+    errors: {},
   };
 
   validate = () => {
@@ -26,7 +28,7 @@ class Form extends Component {
     return error ? error.details[0].message : null;
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     const errors = this.validate();
@@ -69,6 +71,26 @@ class Form extends Component {
         error={errors[name]}
       />
     );
+  }
+
+  renderSubmitButton(label, isLoading) {
+    if (!isLoading) {
+      return (
+        <button
+          className="btn btn-block btn-primary pull-right"
+          disabled={this.validate()}
+        >
+          {label}
+        </button>
+      );
+    } else {
+      return (
+        <button className="btn btn-block btn-primary pull-right disabled">
+          <img src="/images/loading.gif" alt="" className="spinner" />
+          Loading...
+        </button>
+      );
+    }
   }
 
   renderInput(name, label, type = "text") {
