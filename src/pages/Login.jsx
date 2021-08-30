@@ -22,7 +22,8 @@ class Login extends Form {
     try {
       this.setState({ isLoading: true, errorMessage: "" });
       const { data } = this.state;
-      this.props.history.push("/dashboard");
+      await auth.login(data);
+      this.props.history.push("/app/dashboard");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         let { message } = ex.response.data;
@@ -61,9 +62,7 @@ class Login extends Form {
                   {this.renderInput("password", "Password", "password")}
                   {this.renderSubmitButton("Login", this.state.isLoading)}
                 </form>
-                <p className="text-muted text-center mt-2">
-                  New here? <Link to="/register"> Sign up </Link>
-                </p>
+            
               </div>
             </div>
             <p className="text-muted text-center">&copy; Copyright 2021 </p>
