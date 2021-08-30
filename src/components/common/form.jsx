@@ -48,6 +48,7 @@ class Form extends Component {
     data[input.name] = input.value;
 
     this.setState({ data, errors });
+    console.log("Errors ---->", errors)
   };
 
   renderButton(label) {
@@ -73,11 +74,16 @@ class Form extends Component {
     );
   }
 
-  renderSubmitButton(label, isLoading) {
+  renderSaveButton(label, isLoading) {
+
+
+  }
+
+  renderSubmitButton(label, isLoading, addClass ="btn-block") {
     if (!isLoading) {
       return (
         <button
-          className="btn btn-block btn-primary pull-right"
+          className={`btn ${addClass} btn-primary pull-right`}
           disabled={this.validate()}
         >
           {label}
