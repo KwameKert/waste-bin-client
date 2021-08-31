@@ -35,14 +35,14 @@ const DoughnutChart = (props) => {
         data: [
           {
             color: "#2012FE",
-            name: "12 active",
+            name: "10 active",
             y: 150,
             z: 1,
           },
           {
             color: "#39B4F6",
             name: "2 inactive",
-            y: 50,
+            y: 30,
             z: 1,
           },
         ],

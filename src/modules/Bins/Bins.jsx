@@ -31,14 +31,14 @@ class Bin extends Component {
         try {
           let { status, contactName,contactAddress,contactPhone, longitude, latitude } = binData;
           let data = { status, contactName,contactAddress,contactPhone, longitude, latitude  };
-            console.log("data --> ", data)
-          //   if (binData.id) {
-        //     await binservice.updatebin(data);
-        //   } else {
-        //     let binResponse = await binservice.savebin(data);
-        //   }
-        //   toast.success("bin saved successfully");
-        //   this.fetchbins();
+            if (binData.id) {
+            await binservice.updatebin(data);
+          } else {
+            
+            let binResponse = await binservice.saveBin(data);
+          }
+          toast.success("bin saved successfully");
+          this.fetchbins();
         } catch (ex) {
           console.log(ex);
           if (ex.response && ex.response.status === 400) {

@@ -18,7 +18,7 @@ const Sidebar = ({ routes }) => {
   return (
     <>
       <div className="border-right " id="sidebar-wrapper">
-        <h4 className="text-center py-3">The Ambassador</h4>
+        <h4 className="text-center py-3">Waste Management</h4>
 
         <div className="list-group list-group-flush mt-4">
           <RenderLinks />

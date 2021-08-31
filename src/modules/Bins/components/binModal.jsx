@@ -16,11 +16,10 @@ class BinModal extends Form {
       longitude: "",
       status: "",
     },
-    
     errors: {},
     options: [
-      { id: "active", name: "Active" },
-      { id: "inactive", name: "Inactive" },
+      { id: 1, name: "Active" },
+      { id: 0, name: "Inactive" },
     ],
     isLoading: false,
     show: false,
@@ -75,10 +74,10 @@ class BinModal extends Form {
               {this.renderInput("contactPhone", "Contact Phone")}
               <div className="row">
                   <div className="col">
-                  {this.renderInput("latitude", "Latitude ")}
+                  {this.renderInput("latitude", "Latitude")}
                   </div>
                   <div className="col">
-                  {this.renderInput("longitude", "Longitude ")}
+                  {this.renderInput("longitude", "Longitude")}
                   </div>
               </div>
               {this.renderSelect("status", "Status", this.state.options)}

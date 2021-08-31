@@ -14,6 +14,13 @@ class Dashboard extends Component {
     },
   };
 
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+}
+
   render() {
     return (
       <div>
@@ -25,7 +32,7 @@ class Dashboard extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col-md-12">
-                    <p>Users activity</p>
+                    <p>Bin activity</p>
                     <DoughnutChart />
                   </div>
                 </div>
@@ -58,8 +65,8 @@ class Dashboard extends Component {
                     />
                   </div>
                   <div className="col-md-7 text-left">
-                    <h3 class="dashboardHeading">$234,323</h3>
-                    <p class="text-muted">Earned this month.</p>
+                    <h3 className="dashboardHeading">$0</h3>
+                    <p className="text-muted">Earned this month.</p>
                   </div>
                 </div>
               </div>
@@ -77,13 +84,13 @@ class Dashboard extends Component {
                     />
                   </div>
                   <div className="col-md-7 text-left">
-                    <h3 class="dashboardHeading">128</h3>
-                    <p class="text-muted">New Clients.</p>
+                    <h3 className="dashboardHeading">10</h3>
+                    <p className="text-muted">New Clients.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="card mt-3">
+            {/* <div className="card mt-3">
               <div className="card-body dashboardCardBody">
                 <div className="row">
                   <div className="col-md-2 text-center">
@@ -95,12 +102,12 @@ class Dashboard extends Component {
                     />
                   </div>
                   <div className="col-md-7 text-left">
-                    <h3 class="dashboardHeading">128</h3>
-                    <p class="text-muted">New Clients.</p>
+                    <h3 className="dashboardHeading">128</h3>
+                    <p className="text-muted">New Clients.</p>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

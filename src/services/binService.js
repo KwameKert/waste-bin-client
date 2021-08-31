@@ -3,16 +3,17 @@ import { apiUrl } from "../config.json";
 
 const apiEndpoint = apiUrl + "/bin";
 
-http.setJwt(getJwt());
+
 
 async function getAllBins() {
+    http.setJwt(getJwt());
   let { data: responseData } = await http.get(`${apiEndpoint}/`);
   let { data } = responseData;
-  console.log(data)
   return data;
 }
 
 async function saveBin(requestData) {
+    http.setJwt(getJwt());
   let { data: responseData } = await http.post(`${apiEndpoint}/`, requestData);
   let { data } = responseData;
   console.log("data here ", responseData);
@@ -20,6 +21,7 @@ async function saveBin(requestData) {
 }
 
 async function updateBin(requestData) {
+    http.setJwt(getJwt());
   let { data: responseData } = await http.put(`${apiEndpoint}/`, requestData);
   let { data } = responseData;
   return data;

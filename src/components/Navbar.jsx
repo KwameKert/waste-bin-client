@@ -1,13 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link ,useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import auth from '../services/authService'
 
 const Navbar = ({ onToggle }) => {
+  const history = useHistory();
   const getTodayDate = () => {
     const date = new Date();
     let arr = date.toDateString().split(" ");
     return `${arr[1]} ${arr[2]}`;
+  };
+
+  const logout = () => {
+    auth.logout();
+    history.push("/login");
   };
   return (
     <React.Fragment>
@@ -59,9 +66,9 @@ const Navbar = ({ onToggle }) => {
                     </Link>
 
                     <div className="dropdown-divider"></div>
-                    <Link className="dropdown-item" to="/login">
+                    <a className="dropdown-item" onClick={logout}>
                       Logout
-                    </Link>
+                    </a>
                   </div>
                 </li>
               </ul>

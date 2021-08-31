@@ -18,6 +18,13 @@ class Login extends Form {
     password: Joi.string().required().label("Password").min(8),
   };
 
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+}
+
   doSubmit = async () => {
     try {
       this.setState({ isLoading: true, errorMessage: "" });

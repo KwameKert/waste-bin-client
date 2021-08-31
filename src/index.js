@@ -12,12 +12,11 @@ import reportWebVitals from "./reportWebVitals";
 import { ToastContainer } from "react-toastify";
 
 ReactDOM.render(
-  <React.StrictMode>
+
     <BrowserRouter>
       <App />
       <ToastContainer />
-    </BrowserRouter>
-  </React.StrictMode>,
+    </BrowserRouter>,
   document.getElementById("root")
 );
 

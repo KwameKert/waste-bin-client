@@ -3,7 +3,6 @@ import { apiUrl } from "../config.json";
 import jwtDecode from "jwt-decode";
 
 const apiEndpoint = apiUrl + "/auth";
-
 async function login(requestData) {
   let { data: responseData } = await http.post(
     `${apiEndpoint}/login`,

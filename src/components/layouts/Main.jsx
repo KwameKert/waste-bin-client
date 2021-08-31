@@ -12,6 +12,7 @@ import {
   faTrashAlt
 } from "@fortawesome/free-solid-svg-icons";
 import Bin from './../../modules/Bins/Bins';
+import BinDetail from './../../modules/Bins/BinDetail';
 const Main = () => {
   const routes = [
     { name: "Dashboard", path: "/app/dashboard", icon: faChartPie },
@@ -33,6 +34,7 @@ const Main = () => {
             <Switch>
               <Route path="/app/dashboard" component={Dashboard} />
               <Route path="/app/bins" component={Bin} />
+              <Route path="/app/binDetail" component={BinDetail} />
             </Switch>
           </div>
         </div>
