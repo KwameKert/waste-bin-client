@@ -3,17 +3,22 @@ import { apiUrl } from "../config.json";
 
 const apiEndpoint = apiUrl + "/bin";
 
-
-
 async function getAllBins() {
-    http.setJwt(getJwt());
+  http.setJwt(getJwt());
   let { data: responseData } = await http.get(`${apiEndpoint}/`);
   let { data } = responseData;
   return data;
 }
 
+async function getDashboard() {
+  http.setJwt(getJwt());
+  let { data: responseData } = await http.get(`${apiEndpoint}/dashboard`);
+  let { data } = responseData;
+  return data;
+}
+
 async function saveBin(requestData) {
-    http.setJwt(getJwt());
+  http.setJwt(getJwt());
   let { data: responseData } = await http.post(`${apiEndpoint}/`, requestData);
   let { data } = responseData;
   console.log("data here ", responseData);
@@ -21,7 +26,7 @@ async function saveBin(requestData) {
 }
 
 async function updateBin(requestData) {
-    http.setJwt(getJwt());
+  http.setJwt(getJwt());
   let { data: responseData } = await http.put(`${apiEndpoint}/`, requestData);
   let { data } = responseData;
   return data;
@@ -32,9 +37,10 @@ export function getJwt() {
 }
 
 const exportedObject = {
-    getAllBins,
+  getAllBins,
   saveBin,
   updateBin,
+  getDashboard,
 };
 
 export default exportedObject;

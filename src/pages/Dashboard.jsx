@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import ColumnChart from "../components/widgets/columnChart";
 import DoughnutChart from "../components/widgets/dougnutChart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faReceipt, faHandshake } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrashAlt,
+  faUser,
+  faMoneyBillAlt,
+  faHourglass,
+} from "@fortawesome/free-solid-svg-icons";
+
+import binService from "../services/binService";
 
 class Dashboard extends Component {
   state = {
@@ -14,100 +21,122 @@ class Dashboard extends Component {
     },
   };
 
+  componentDidMount() {
+    this.fetchDashboard();
+  }
+
+  fetchDashboard = () => {
+    binService.getDashboard().then((data) => {
+      // let data = res.data;
+      this.setState({
+        ...this.state,
+        users: data.userSize,
+        bins: data.binSize,
+        pendingTransactions: data.pendingTransactions,
+        completedTransactions: data.completedTransactions,
+      });
+    });
+  };
+
   componentWillUnmount() {
     // fix Warning: Can't perform a React state update on an unmounted component
-    this.setState = (state,callback)=>{
-        return;
+    this.setState = (state, callback) => {
+      return;
     };
-}
+  }
 
   render() {
     return (
       <div>
         <h3>Dashboard </h3>
         <p className="text-muted ">Welcome to Dashboard</p>
-        <div className="row">
-          <div className="col-md-4">
-            <div className="card">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-md-12">
-                    <p>Bin activity</p>
-                    <DoughnutChart />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div className="col-md-4">
-            <div className="card">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-md-12">
-                    <p>Users activity</p>
-                    <ColumnChart />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
+        <div className="row">
+          <div className="col-md-3">
             <div className="card">
               <div className="card-body  dashboardCardBody">
                 <div className="row">
                   <div className="col-md-2 text-center">
                     <FontAwesomeIcon
                       className="mt-1"
-                      icon={faReceipt}
+                      icon={faUser}
                       size="2x"
                       color="#625ED7"
                     />
                   </div>
-                  <div className="col-md-7 text-left">
-                    <h3 className="dashboardHeading">$0</h3>
-                    <p className="text-muted">Earned this month.</p>
+                  <div className="col-md-10 text-left">
+                    <h3 className="dashboardHeading">{this.state.users}</h3>
+                    <p className="text-muted">No. users</p>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div className="card mt-3">
-              <div className="card-body dashboardCardBody">
+          </div>
+          <div className="col-md-3">
+            <div className="card">
+              <div className="card-body  dashboardCardBody">
                 <div className="row">
                   <div className="col-md-2 text-center">
                     <FontAwesomeIcon
                       className="mt-1"
-                      icon={faHandshake}
+                      icon={faMoneyBillAlt}
                       size="2x"
-                      color="#39B4F6"
+                      color="#625ED7"
                     />
                   </div>
-                  <div className="col-md-7 text-left">
-                    <h3 className="dashboardHeading">10</h3>
-                    <p className="text-muted">New Clients.</p>
+                  <div className="col-md-10 text-left">
+                    <h3 className="dashboardHeading pl-2">
+                      {this.state.completedTransactions}{" "}
+                      <small className="text-muted">GH₵</small>
+                    </h3>
+                    <p className="text-muted">Completed Transactions</p>
                   </div>
                 </div>
               </div>
             </div>
-            {/* <div className="card mt-3">
-              <div className="card-body dashboardCardBody">
+          </div>
+          <div className="col-md-3">
+            <div className="card">
+              <div className="card-body  dashboardCardBody">
                 <div className="row">
                   <div className="col-md-2 text-center">
                     <FontAwesomeIcon
                       className="mt-1"
-                      icon={faHandshake}
+                      icon={faHourglass}
                       size="2x"
-                      color="#39B4F6"
+                      color="#625ED7"
                     />
                   </div>
-                  <div className="col-md-7 text-left">
-                    <h3 className="dashboardHeading">128</h3>
-                    <p className="text-muted">New Clients.</p>
+                  <div className="col-md-10 text-left">
+                    <h3 className="dashboardHeading pl-2">
+                      {this.state.pendingTransactions}{" "}
+                      <small className="text-muted">GH₵</small>
+                    </h3>
+                    <p className="text-muted">Pending Transactions</p>
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
+          </div>
+          <div className="col-md-3">
+            <div className="card">
+              <div className="card-body  dashboardCardBody">
+                <div className="row">
+                  <div className="col-md-2 text-center">
+                    <FontAwesomeIcon
+                      className="mt-1"
+                      icon={faTrashAlt}
+                      size="2x"
+                      color="#625ED7"
+                    />
+                  </div>
+                  <div className="col-md-10 text-left">
+                    <h3 className="dashboardHeading pl-2">{this.state.bins}</h3>
+                    <p className="text-muted">No. bins</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

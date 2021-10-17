@@ -19,11 +19,10 @@ class Login extends Form {
   };
 
   componentWillUnmount() {
-    // fix Warning: Can't perform a React state update on an unmounted component
-    this.setState = (state,callback)=>{
-        return;
+    this.setState = (state, callback) => {
+      return;
     };
-}
+  }
 
   doSubmit = async () => {
     try {
@@ -69,7 +68,6 @@ class Login extends Form {
                   {this.renderInput("password", "Password", "password")}
                   {this.renderSubmitButton("Login", this.state.isLoading)}
                 </form>
-            
               </div>
             </div>
             <p className="text-muted text-center">&copy; Copyright 2021 </p>
